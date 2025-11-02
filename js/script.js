@@ -64,3 +64,29 @@ window.onclick = (e) => {
     itemDetailModal.style.display = 'none';
   }
 };
+
+// Tentukan nomor WhatsApp tujuan
+const nomorWa = '6289609663232'; // Ganti dengan No HP/WA Anda (tanpa +, spasi, atau -)
+
+// Dapatkan elemen tombol
+const tombolKirim = document.getElementById('btn-kirim');
+
+tombolKirim.addEventListener('click', function() {
+    // 1. Ambil nilai dari input field
+    const nama = document.getElementById('input-nama').value;
+    const email = document.getElementById('input-email').value;
+    const noHp = document.getElementById('input-hp').value;
+
+    // 2. Susun teks pesan
+    let pesan = `Halo, saya ingin konsultasi furniture.%0A`; // %0A adalah kode untuk baris baru (Enter)
+    pesan += `Nama: ${nama}%0A`;
+    pesan += `Email: ${email}%0A`;
+    pesan += `No. HP: ${noHp}%0A`;
+    pesan += `Mohon info ketersediaan produk Anda. Terima kasih.`;
+
+    // 3. Gabungkan menjadi URL WhatsApp
+    const waURL = `https://wa.me/${nomorWa}?text=${pesan}`;
+    
+    // 4. Buka tautan di tab baru
+    window.open(waURL, '_blank');
+});
