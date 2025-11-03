@@ -169,7 +169,7 @@ body {
   margin-top: 1rem;
   line-height: 1.4;
   font-weight: 500;
-  text-shadow: 5px 5px 5px rgb(0, 0, 0);
+  text-shadow: 2px 2px 2px rgb(0, 0, 0);
   mix-blend-mode: difference;
 }
 
@@ -272,12 +272,13 @@ body {
 
 /* Products Section */
 .products .row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 1.5rem;
+  display: grid; /* HAPUS BARIS INI */
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* HAPUS BARIS INI */
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* HAPUS BARIS INI */
+  gap: 1.5rem; /* HAPUS BARIS INI */
   margin-top: 4rem;
 }
+
 
 .products .product-card {
   text-align: center;
