@@ -153,7 +153,7 @@ Kami di sini untuk mendengarkan dan membantumu menciptakannya.</p>
     </p>
 
     <div class="row">
-      <form action="" id="contact-form">
+      <form action="" id="contactForm">
         <div class="input-group">
           <i data-feather="user"></i>
           <input type="text" placeholder="nama" id="nama" name="nama">
@@ -168,33 +168,6 @@ Kami di sini untuk mendengarkan dan membantumu menciptakannya.</p>
         </div>
         <button type="submit" class="btn">kirim pesan</button>
       </form>
-      <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Mencegah form melakukan submit biasa (refresh halaman)
-
-        // 1. Ambil nilai dari setiap input
-        const nama = document.getElementById('nama').value;
-        const email = document.getElementById('email').value;
-        const nohp = document.getElementById('nohp').value;
-
-        // 2. Tentukan nomor WhatsApp tujuan
-        // Nomor WA Anda: 089609663232 (Dikonversi ke format WA: 6289609663232)
-        const nomorWA = "6289609663232"; 
-        
-        // 3. Buat pesan yang akan dikirim ke WhatsApp
-        const pesan = `Halo, saya *${nama}* tertarik dengan produk Anda.%0A%0A*Detail Kontak Pelanggan:*%0ANama: ${nama}%0AEmail: ${email}%0ANo. HP: ${nohp}%0A%0AMohon dihubungi kembali. Terima kasih.`;
-
-        // 4. Gabungkan menjadi tautan WhatsApp API
-        const waLink = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
-
-        // 5. Arahkan pengguna ke tautan WhatsApp di tab baru
-        window.open(waLink, '_blank');
-        
-        // 6. Reset form setelah data diambil
-        this.reset();
-    });
-</script>
-
     </div>
   </section>
   <!-- Contact Section end -->
@@ -218,6 +191,35 @@ Kami di sini untuk mendengarkan dan membantumu menciptakannya.</p>
       <p>Created by <a href="">Ichsan_rh</a>. | &copy; 2025.</p>
     </div>
   </footer>
+ <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah form melakukan submit biasa (refresh halaman)
+
+        // 1. Ambil nilai dari setiap input
+        const nama = document.getElementById('nama').value;
+        const email = document.getElementById('email').value;
+        const nohp = document.getElementById('nohp').value;
+
+        // 2. Tentukan nomor WhatsApp tujuan
+        const nomorWA = "6287785394998"; // Nomor ini sudah benar
+        
+        // 3. Buat pesan yang akan dikirim ke WhatsApp
+        const pesan = `Halo, saya *${nama}* tertarik dengan produk Anda.%0A%0A*Detail Kontak Pelanggan:*%0ANama: ${nama}%0AEmail: ${email}%0ANo. HP: ${nohp}%0A%0AMohon dihubungi kembali. Terima kasih.`;
+
+        // 4. Gabungkan menjadi tautan WhatsApp API
+        const waLink = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+        // 5. Arahkan pengguna ke tautan WhatsApp di tab baru
+        window.open(waLink, '_blank');
+        
+        // 6. Reset form setelah data diambil
+        this.reset();
+        });
+    </script>
+    
+    </body>
+</html>
+
   <!-- Footer end -->
 
   <!-- Modal Box Item Detail start -->
@@ -244,5 +246,4 @@ Kami di sini untuk mendengarkan dan membantumu menciptakannya.</p>
   <!-- My Javascript -->
   <script src="js/script.js"></script>
 </body>
-
 </html>

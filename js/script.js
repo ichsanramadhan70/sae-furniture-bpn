@@ -64,3 +64,27 @@ window.onclick = (e) => {
     itemDetailModal.style.display = 'none';
   }
 }
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah form melakukan submit biasa (refresh halaman)
+
+    // 1. Ambil nilai dari setiap input
+    const nama = document.getElementById('nama').value;
+    const email = document.getElementById('email').value;
+    const nohp = document.getElementById('nohp').value;
+
+    // 2. Tentukan nomor WhatsApp tujuan
+    const nomorWA = "6287785394998"; // Nomor WA Anda
+    
+    // 3. Buat pesan yang akan dikirim ke WhatsApp
+    const pesan = `Halo, saya *${nama}* tertarik dengan produk Anda.%0A%0A*Detail Kontak Pelanggan:*%0ANama: ${nama}%0AEmail: ${email}%0ANo. HP: ${nohp}%0A%0AMohon dihubungi kembali. Terima kasih.`;
+
+    // 4. Gabungkan menjadi tautan WhatsApp API
+    const waLink = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+    // 5. Arahkan pengguna ke tautan WhatsApp di tab baru
+    window.open(waLink, '_blank');
+    
+    // 6. Reset form setelah data diambil
+    this.reset();
+});
