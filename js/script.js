@@ -77,7 +77,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     const nomorWA = "6287785394998"; // Nomor WA Anda
     
     // 3. Buat pesan yang akan dikirim ke WhatsApp
-    const pesan = `Halo, saya *${nama}* tertarik dengan produk Anda.%0A%0A*Detail Kontak Pelanggan:*%0ANama: ${nama}%0AEmail: ${email}%0ANo. HP: ${nohp}%0A%0AMohon dihubungi kembali. Terima kasih.`;
+    const pesan = `Halo, saya *${nama}* ingin melakukan konsultasi costum furniture dengan SAE FURNITURE BPN. Berikut detail kontak saya Nama: ${nama} Email: ${email} No. HP: ${nohp} Mohon dihubungi kembali. Terima kasih.`;
 
     // 4. Gabungkan menjadi tautan WhatsApp API
     const waLink = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
