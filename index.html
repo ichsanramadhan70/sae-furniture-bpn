@@ -156,18 +156,44 @@ Kami di sini untuk mendengarkan dan membantumu menciptakannya.</p>
       <form action="" id="contact-form">
         <div class="input-group">
           <i data-feather="user"></i>
-          <input type="text" placeholder="nama"> 
+          <input type="text" placeholder="nama" id="nama" name="nama">
         </div>
         <div class="input-group">
           <i data-feather="mail"></i>
-          <input type="text" placeholder="email"> 
+          <input type="text" placeholder="email" id="email" name="email">
         </div>
         <div class="input-group">
           <i data-feather="phone"></i>
-          <input type="text" placeholder="no hp"> 
+          <input type="text" placeholder="no hp" id="nohp" name="nohp">
         </div>
         <button type="submit" class="btn">kirim pesan</button>
       </form>
+      <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah form melakukan submit biasa (refresh halaman)
+
+        // 1. Ambil nilai dari setiap input
+        const nama = document.getElementById('nama').value;
+        const email = document.getElementById('email').value;
+        const nohp = document.getElementById('nohp').value;
+
+        // 2. Tentukan nomor WhatsApp tujuan
+        // Nomor WA Anda: 089609663232 (Dikonversi ke format WA: 6289609663232)
+        const nomorWA = "6289609663232"; 
+        
+        // 3. Buat pesan yang akan dikirim ke WhatsApp
+        const pesan = `Halo, saya *${nama}* tertarik dengan produk Anda.%0A%0A*Detail Kontak Pelanggan:*%0ANama: ${nama}%0AEmail: ${email}%0ANo. HP: ${nohp}%0A%0AMohon dihubungi kembali. Terima kasih.`;
+
+        // 4. Gabungkan menjadi tautan WhatsApp API
+        const waLink = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+        // 5. Arahkan pengguna ke tautan WhatsApp di tab baru
+        window.open(waLink, '_blank');
+        
+        // 6. Reset form setelah data diambil
+        this.reset();
+    });
+</script>
 
     </div>
   </section>
@@ -176,9 +202,9 @@ Kami di sini untuk mendengarkan dan membantumu menciptakannya.</p>
   <!-- Footer start -->
   <footer>
     <div class="socials">
-      <a href="#"><i data-feather="instagram"></i></a>
-      <a href="#"><i data-feather="mail"></i></a>
-      <a href="#"><i data-feather="phone-call"></i></a>
+      <a href="https://www.instagram.com/sae_furniture.bpn/" target="_blank"><i data-feather="instagram"></i></a>
+      <a href="mailtp:saekokohabadi@gmail.com" target="_blank"><i data-feather="mail"></i></a>
+      <a href="tel:+6289609663232" target="_blank"><i data-feather="phone-call"></i></a>
     </div>
 
     <div class="links">
