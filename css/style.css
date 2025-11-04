@@ -296,19 +296,61 @@ body {
   margin: 1rem auto 0.5rem;
 }
 
-/* Products Section */
 .products .row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 1.5rem;
-  margin-top: 4rem;
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    
+    /* Kunci: Scroll-Snap untuk berhenti tepat di setiap item */
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; 
+    
+    margin-top: 5rem;
+    justify-content: flex-start; 
+    padding-bottom: 2rem; 
+    
+    /* KUNCI PENTING: HAPUS PADDING HORIZONTAL DI SINI */
+    padding-left: 0; 
+    padding-right: 0; 
+}
+
+/* Opsional: Menyembunyikan scrollbar bawaan (tetap dipertahankan) */
+.products .row::-webkit-scrollbar {
+    height: 5px;
+}
+.products .row::-webkit-scrollbar-thumb {
+    background: var(--primary); 
+    border-radius: 5px;
+}
+.products .row::-webkit-scrollbar-track {
+    background: #444;
 }
 
 .products .product-card {
-  text-align: center;
-  border: 1px solid #666;
-  padding: 2rem;
+    /* KUNCI: Membuat kartu mengambil 100% lebar viewport */
+    flex: 0 0 100vw; /* Menggunakan 100vw (viewport width) untuk mengisi layar penuh */
+    max-width: 100vw;
+    
+    /* KUNCI: Memaksa scroll berhenti tepat di item ini */
+    scroll-snap-align: start; 
+    
+    text-align: center;
+    padding: 2rem 7%; /* Memberi padding/jarak di dalam kartu agar teks tidak menempel tepi layar */
+    margin: 0; /* Menghilangkan margin horizontal */
+    position: relative;
+}
+
+/* Hapus margin antar kartu yang lama */
+.products .product-card + .product-card {
+    margin-left: 0; 
+}
+
+/* Pastikan gambar di dalamnya besar dan jelas */
+.products .product-card .product-image img {
+    height: auto; 
+    max-height: 50vh; /* Maksimal 50% tinggi layar HP */
+    width: 100%; /* Memastikan gambar mengisi lebar kartu */
+    object-fit: contain; /* Gambar tidak akan terpotong */
 }
 
 .products .product-icons {
@@ -580,25 +622,15 @@ footer .credit a {
   }
 
   @media (max-width: 758px) {
-
-    .hero {
-        /* Mengatur tinggi yang proporsional di HP */
-        min-height: 80vh; 
-        
-        /* KUNCI PERBAIKAN: Mengganti 'cover' menjadi 'contain' */
-        background-size: contain; 
-        
-        /* Memastikan gambar background tidak terulang */
-        background-repeat: no-repeat;
-        
-        /* Opsional: Mengatur warna latar belakang yang terlihat di ruang kosong */
-        background-color: #000; /* Jika background Hero Anda gelap, ini membantu */
-    }
+    /* ... kode lain ... */
     
+  
     .about .row .about-img img {
         height: auto; /* BIARKAN TINGGI MENYESUAIKAN LEBAR */
         object-fit: contain; /* PASTIKAN SELURUH GAMBAR TERLIHAT */
-    }  
+    }
+    
+    /* ... kode lain ... */
 }
 
   .about .row .content {
