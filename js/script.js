@@ -89,3 +89,66 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     this.reset();
 });
 
+// ==========================================================
+// FUNGSI SLIDER DENGAN INDIKATOR (DOTS) YANG STABIL
+// ==========================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('product-slider');
+    const dotsContainer = document.getElementById('product-dots');
+    const totalSlides = slider ? slider.querySelectorAll('.product-card').length : 0;
+
+    if (!slider || totalSlides === 0) return;
+
+    // 1. BUAT BULATAN (DOTS)
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.setAttribute('data-index', i);
+        dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.querySelectorAll('.dot');
+    const slideWidth = window.innerWidth; // Lebar slide adalah lebar layar (100vw)
+
+    // 2. FUNGSI KLIK BULATAN UNTUK GESER
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index'));
+            
+            slider.scrollTo({
+                left: index * slideWidth, 
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // 3. FUNGSI UPDATE BULATAN AKTIF
+    function updateDots(activeIndex) {
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[activeIndex]) {
+            dots[activeIndex].classList.add('active');
+        }
+    }
+
+    // Awal: Set bulatan pertama aktif
+    updateDots(0);
+
+    // 4. UPDATE BULATAN KETIKA PENGGUNA MENGGESER SLIDER MANUAL
+    // Tambahkan debounce untuk stabilitas
+    let isScrolling;
+    slider.addEventListener('scroll', () => {
+        window.clearTimeout(isScrolling);
+        
+        isScrolling = setTimeout(() => {
+            const scrollLeft = slider.scrollLeft;
+            // Hitung index slide aktif (membulatkan ke yang terdekat)
+            const activeIndex = Math.round(scrollLeft / slideWidth); 
+            updateDots(activeIndex);
+        }, 66); // Tunggu sebentar setelah scroll berhenti
+    });
+});
+
+
+
+
