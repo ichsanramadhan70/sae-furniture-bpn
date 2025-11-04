@@ -203,24 +203,56 @@ body {
 .products h2 span,
 .contact h2 span {
   color: var(--primary);
+  text-align: center;
 }
 
 .about .row {
-  display: flex;
+    display: flex;
+    flex-direction: column; /* Memastikan gambar di atas teks */
 }
 
+/* 1. KONTROL CONTAINER GAMBAR */
+.about .row .about-img {
+    width: 100%; /* Memenuhi lebar penuh area About */
+    
+    /* PENTING: HAPUS ASPECT-RATIO DAN MAX-HEIGHT */
+    height: auto; /* Membiarkan tinggi menyesuaikan konten di dalamnya */
+    
+    overflow: hidden;
+    margin: 0 auto 3rem auto; /* Jarak yang cukup untuk teks di bawahnya */
+}
+
+/* 2. KONTROL ELEMEN GAMBAR */
 .about .row .about-img img {
-  flex: 1 1 80rem;
+    /* Hapus flex: 1 1 80rem; yang lama */
+    width: 100%; /* PENTING: Gambar mengambil 100% lebar container */
+    height: auto; /* PENTING: Tinggi gambar menyesuaikan secara alami */
+    
+    /* 'contain' tidak lagi diperlukan jika height: auto, tapi kita biarkan sebagai pengaman */
+    object-fit: contain; 
+    
+    flex: none; 
 }
 
 .about .row .content p {
   text-align: justify;
   padding-left: 2rem;
   padding-right: 2rem;
+  margin-bottom: 1.8;
 }
 
 .about .row .content h3 {
   font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 3rem;
+  color: var(--primary);
+}
+
+.about .row .content h4 {
+  font-size: 1.8rem;
+  text-align: left;
   margin-bottom: 1rem;
   padding-left: 2rem;
   padding-right: 3rem;
@@ -272,13 +304,12 @@ body {
 
 /* Products Section */
 .products .row {
-  display: grid; /* HAPUS BARIS INI */
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* HAPUS BARIS INI */
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* HAPUS BARIS INI */
-  gap: 1.5rem; /* HAPUS BARIS INI */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
   margin-top: 4rem;
 }
-
 
 .products .product-card {
   text-align: center;
