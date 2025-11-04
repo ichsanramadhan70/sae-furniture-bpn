@@ -580,14 +580,25 @@ footer .credit a {
   }
 
   @media (max-width: 758px) {
-    /* ... kode lain ... */
+
+    .hero {
+        /* Mengatur tinggi yang proporsional di HP */
+        min-height: 80vh; 
+        
+        /* KUNCI PERBAIKAN: Mengganti 'cover' menjadi 'contain' */
+        background-size: contain; 
+        
+        /* Memastikan gambar background tidak terulang */
+        background-repeat: no-repeat;
+        
+        /* Opsional: Mengatur warna latar belakang yang terlihat di ruang kosong */
+        background-color: #000; /* Jika background Hero Anda gelap, ini membantu */
+    }
     
     .about .row .about-img img {
         height: auto; /* BIARKAN TINGGI MENYESUAIKAN LEBAR */
         object-fit: contain; /* PASTIKAN SELURUH GAMBAR TERLIHAT */
-    }
-    
-    /* ... kode lain ... */
+    }  
 }
 
   .about .row .content {
