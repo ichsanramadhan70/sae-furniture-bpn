@@ -211,26 +211,20 @@ body {
     flex-direction: column; /* Memastikan gambar di atas teks */
 }
 
-/* 1. KONTROL CONTAINER GAMBAR */
+/* style.css (Di luar media query, sekitar baris 1220-an) */
+
 .about .row .about-img {
-    width: 100%; /* Memenuhi lebar penuh area About */
-    
-    /* PENTING: HAPUS ASPECT-RATIO DAN MAX-HEIGHT */
-    height: auto; /* Membiarkan tinggi menyesuaikan konten di dalamnya */
-    
+    width: 100%; 
+    height: auto; /* Pastikan ini ada! */
     overflow: hidden;
-    margin: 0 auto 3rem auto; /* Jarak yang cukup untuk teks di bawahnya */
+    margin: 0 auto 3rem auto; 
+    flex-basis: auto; 
 }
 
-/* 2. KONTROL ELEMEN GAMBAR */
 .about .row .about-img img {
-    /* Hapus flex: 1 1 80rem; yang lama */
-    width: 100%; /* PENTING: Gambar mengambil 100% lebar container */
-    height: auto; /* PENTING: Tinggi gambar menyesuaikan secara alami */
-    
-    /* 'contain' tidak lagi diperlukan jika height: auto, tapi kita biarkan sebagai pengaman */
+    width: 100%; 
+    height: auto; /* Pastikan ini ada! */
     object-fit: contain; 
-    
     flex: none; 
 }
 
@@ -585,11 +579,16 @@ footer .credit a {
     flex-wrap: wrap;
   }
 
-  .about .row .about-img img {
-    height: 50rem;
-    object-fit: cover;
-    object-position: center;
-  }
+  @media (max-width: 758px) {
+    /* ... kode lain ... */
+    
+    .about .row .about-img img {
+        height: auto; /* BIARKAN TINGGI MENYESUAIKAN LEBAR */
+        object-fit: contain; /* PASTIKAN SELURUH GAMBAR TERLIHAT */
+    }
+    
+    /* ... kode lain ... */
+}
 
   .about .row .content {
     padding: 0;
